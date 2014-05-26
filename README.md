@@ -139,13 +139,15 @@ Use this recipe when you want data bag driven data in your workflow.
 
 An array of package hashes to be installed on the system, all of which need
 no configuration. The keys in each hash correspond to the attributes passed to
-the [package resource][package]. For example:
+the [package resource][package]. If a string is provided instead of a hash, it
+will be used as the package name. For example:
 
     node['platform_packages']['pkgs'] = [
       { 'name'    => 'tree',
         'action'  => 'upgrade'
       },
-      { 'name'    => 'stow' }
+      { 'name'    => 'stow' },
+      'vim'
     ]
 
 The default is an empty Array: `[]`.
